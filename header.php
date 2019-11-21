@@ -42,6 +42,7 @@ echo <<<_LOGGEDIN
                 <li><a href='members.php'>Members</a></li>
                 <li><a href='marketplace.php'>Marketplace</a></li>
                 <li><a href='additem.php'>Add Item</a></li>
+                <li><a href='removeitem.php'>Remove Item</a></li>
                 <li><a href='friends.php'>Friends</a></li>
                 <li><a href='messages.php'>Messages</a></li>
                 <li><a href='profile.php'>Edit Profile</a></li>

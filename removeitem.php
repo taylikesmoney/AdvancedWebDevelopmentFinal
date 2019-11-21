@@ -2,22 +2,16 @@
 session_start();
 require_once 'header.php';
 
-echo "<h3>Welcome to the $clubstr Marketplace.</h3>";
+echo "<h3>Remove an item from the marketplace</h3>";
 echo "<div>";
 
-if ($loggedin){
-    $numuseritems = queryMysql("SELECT COUNT(*) c FROM items WHERE Username = '$user'");
-    $row = $numuseritems->fetch_assoc();
-    $numuseritems->close();
-    printf("Hi $user, you currently have %d items up for trade.<br>\n", $row['c']);
-    }
-else
-    echo 'Please sign up, or log in if you\'re already a member. Join one of the
-     most rapidly growing and advanced item trading networks available today -
-     your friends are already here.<br>';
+$numuseritems = queryMysql("SELECT COUNT(*) c FROM items WHERE Username = '$user'");
+$row = $numuseritems->fetch_assoc();
+$numuseritems->close();
 
-// code to display items table
-$result = queryMysql("SELECT * FROM items");
+printf("Hi $user, you currently have %d items up for trade.<br>\n", $row['c']);
+
+$result = queryMysql("SELECT * FROM items WHERE Username = '$user'");
 $all_property = array();  //declare an array for saving property
 
 //showing property
@@ -39,7 +33,12 @@ while ($row = mysqli_fetch_array($result)) {
    echo '</tr>';
 }
 echo "</table>";
-// end code to display items table
+
+echo '<br>Which item would you like to remove?';
+echo '<form action="remove.php" method="post">
+     Item name: <input type="text" name = "itemname" /><br/>
+     <input type="submit" />
+     </form>';
 
 echo <<<_END
     </div><br>
